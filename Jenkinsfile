@@ -24,6 +24,8 @@ node {
                 dir(path: env.BUILD_ID){
                     unstash(name: 'compiled-results') 
                     sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F add2vals.py'"
+                    echo "Pause pipeline execution for 1 minute..."
+                    sleep 60
                 }
             }
             catch(e) {
