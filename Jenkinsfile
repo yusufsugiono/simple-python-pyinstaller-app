@@ -18,6 +18,9 @@ node {
             }
         }
     }
+    stage('Manual Approval') {
+        input "Lanjutkan ke tahap Deploy?"
+    }
     stage('Deploy') {
         withEnv(['VOLUME=$(pwd)/sources:/src', 'IMAGE=cdrx/pyinstaller-linux:python2']) {
             try{
